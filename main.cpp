@@ -28,6 +28,26 @@ struct Node {
 int main(){
     
     Node* node1 = new Node(1, nullptr);
+    Node* node2 = new Node(2, nullptr);
+    Node* node3 = new Node(3, nullptr);
+
+    node1->next = node2;
+    node2->next = node3;
+
+    string render_list(Node* list) {
+        Node* node = list;
+        string s = "";
+        while (node != nullptr){
+            s += node.to_string();
+            node = node.next;
+            if (node != nullptr)
+                s += ", ";
+
+        }
+        return s;
+    };
+
+
     cout << node1->to_str() << endl;
 
     return 0;
