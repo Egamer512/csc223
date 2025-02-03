@@ -24,3 +24,11 @@ struct Node {
         return to_string(cargo);
     }
 };
+
+int main(){
+    
+    Node* node1 = new Node(1, nullptr);
+    cout << node1->to_str() << endl;
+
+    return 0;
+}
