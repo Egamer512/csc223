@@ -17,3 +17,9 @@ Node::Node(int cargo, Node* next){
     this->cargo = cargo;
     this->next = next;
 }
+
+string LinkedList::to_str() const {
+    return to_string(cargo);
+}
+
+

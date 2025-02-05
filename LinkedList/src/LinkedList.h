@@ -8,4 +8,7 @@ struct Node {
     Node();
     Node(int);
     Node(int, Node*);
+
+    string to_str() const;
+
 };
