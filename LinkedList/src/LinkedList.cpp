@@ -36,15 +36,13 @@ string Node::to_str() const {
     }
 
 
-string render_list_backward(Node* list, string s=""){
-    if(list == nullptr) return "";
-    Node* head = list;
-    Node* tail = list->next;
-    s = render_list_backward(tail, s) + s;
-    if(head ->next != nullptr){
-        s += ", ";
-    }
-    s+= head->to_str();
-    return s;
+string render_list_backward(Node* list){
+    if(!list) return "";
+
+    if(!list->next) return to_string(list->cargo);
+
+    return render_list_backward(list->next) + ", " + to_string(list->cargo);
+
+    
 }
 
