@@ -7,4 +7,4 @@ struct Node {
     Node();
     Node(int);
     Node(int, Node*);
-}
+};
