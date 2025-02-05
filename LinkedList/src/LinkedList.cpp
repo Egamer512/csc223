@@ -35,3 +35,16 @@ string Node::to_str() const {
         return s;
     }
 
+
+string render_list_backward(Node* list, string s=""){
+    if(list == nullptr) return "";
+    Node* head = list;
+    Node* tail = list->next;
+    s = render_list_backward(tail, s) + s;
+    if(head ->next != nullptr){
+        s += ", ";
+    }
+    s+= head->to_str();
+    return s;
+}
+
