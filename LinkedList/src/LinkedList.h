@@ -16,3 +16,5 @@ struct Node {
 string render_list(Node* list);
 
 string render_list_backward(Node* list);
+
+string render_pretty(Node* list, string (*list_renderer)(Node*));

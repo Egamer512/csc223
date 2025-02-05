@@ -46,3 +46,7 @@ string render_list_backward(Node* list){
     
 }
 
+string render_pretty(Node* list, string (*list_renderer)(Node*)) {
+    return "(" + list_renderer(list) + ")";
+}
+
