@@ -23,7 +23,22 @@ struct Node {
     string to_str() const {
         return to_string(cargo);
     }
+
+
 };
+
+    string render_list(Node* list) {
+    Node* node = list;
+    string s = "";
+    while (node != nullptr){
+        s += node->to_str();
+        node = node->next;
+        if (node != nullptr)
+            s += ", ";
+        }
+        return s;
+    }
+
 
 int main(){
     
@@ -34,21 +49,7 @@ int main(){
     node1->next = node2;
     node2->next = node3;
 
-    string render_list(Node* list) {
-        Node* node = list;
-        string s = "";
-        while (node != nullptr){
-            s += node.to_string();
-            node = node.next;
-            if (node != nullptr)
-                s += ", ";
-
-        }
-        return s;
-    };
-
-
-    cout << node1->to_str() << endl;
+    cout << render_list(node1) << endl;
 
     return 0;
 }
