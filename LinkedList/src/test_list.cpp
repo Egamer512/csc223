@@ -15,8 +15,8 @@ TEST_CASE("Test can create and render List Nodes") {
     CHECK(node1->cargo == 0);
     Node* node2 = new Node(42);
     CHECK(node2->cargo == 42);
-    CHECK(node1->to_string() == "0");
-    CHECK(node2->to_string() == "42");
+    CHECK(node1->to_str() == "0");
+    CHECK(node2->to_str() == "42");
 }
 
 TEST_CASE("Test can link nodes together") {

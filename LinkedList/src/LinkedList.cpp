@@ -18,8 +18,20 @@ Node::Node(int cargo, Node* next){
     this->next = next;
 }
 
-string LinkedList::to_str() const {
+string Node::to_str() const {
     return to_string(cargo);
 }
 
+
+    string render_list(Node* list) {
+    Node* node = list;
+    string s = "";
+    while (node != nullptr){
+        s += node->to_str();
+        node = node->next;
+        if (node != nullptr)
+            s += ", ";
+        }
+        return s;
+    }
 

@@ -12,3 +12,5 @@ struct Node {
     string to_str() const;
 
 };
+
+string render_list(Node* list);
