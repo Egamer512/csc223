@@ -64,6 +64,10 @@ class LinkedList{
             return s + ")";
         }
 
+        int length() const{
+            return num_nodes;
+        }
+
 
 
 
