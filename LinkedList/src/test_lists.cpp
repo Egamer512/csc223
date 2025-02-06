@@ -9,14 +9,14 @@ using namespace std;
 
 
 TEST_CASE("Test can create empty linked list") {
-    LinkedList list;
-    CHECK(list.to_string() == "Empty list");
-    list.insert_in_front(5);
-    CHECK(list.to_string() == "5");
-    list.insert_in_front(42);
-    CHECK(list.to_string() == "42 -> 5");
-    list.insert_in_front(9);
-    CHECK(list.to_string() == "9 -> 42 -> 5");
+    LinkedList<int> list;
+    CHECK(list.to_str() == "List is Empty");
+    list.insert_at_front(5);
+    CHECK(list.to_str() == "5");
+    list.insert_at_front(42);
+    CHECK(list.to_str() == "42 -> 5");
+    list.insert_at_front(9);
+    CHECK(list.to_str() == "9 -> 42 -> 5");
 }
 
 

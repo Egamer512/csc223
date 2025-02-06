@@ -11,6 +11,10 @@ class Node{
             this->cargo = cargo;
             this->next = next;
         }
+
+        string to_str() const{
+            return string(cargo);
+        }
 };
 
 template <class T>
