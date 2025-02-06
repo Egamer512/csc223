@@ -35,6 +35,10 @@ class LinkedList{
             num_nodes++;
         }
 
+        T remove_from_front(){
+            if (head == NULL) throw runtime_error("List is Empty");
+        }
+
 
 };
 
