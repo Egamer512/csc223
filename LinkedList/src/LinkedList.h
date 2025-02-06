@@ -18,6 +18,11 @@ class LinkedList{
     int num_nodes;
     Node<T> head;
 
-    
+    public:
+        LinkedList(){
+            num_nodes = 0;
+            head = nullptr;
+        }
+
 };
 
