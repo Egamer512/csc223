@@ -10,13 +10,13 @@ using namespace std;
 
 TEST_CASE("Test can create empty linked list") {
     LinkedList<int> list;
-    CHECK(list.to_str() == "List is Empty");
+    CHECK(list.to_str() == "Empty List");
     list.insert_at_front(5);
-    CHECK(list.to_str() == "5");
+    CHECK(list.to_str() == "(5)");
     list.insert_at_front(42);
-    CHECK(list.to_str() == "42 -> 5");
+    CHECK(list.to_str() == "(42, 5)");
     list.insert_at_front(9);
-    CHECK(list.to_str() == "9 -> 42 -> 5");
+    CHECK(list.to_str() == "(9, 42, 5)");
 }
 
 

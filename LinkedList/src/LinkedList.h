@@ -1,5 +1,4 @@
 #include <iostream>
-#define LINKEDLIST_H
 using namespace std;
 
 template <class T>
@@ -21,7 +20,7 @@ class Node{
             return cargo;
         }
 
-        Node<T> get_next() const{
+        Node<T>* get_next() const{
             return next;
         }
 
@@ -71,11 +70,13 @@ class LinkedList{
         }
 
         string to_str() const{
+            if (head == nullptr) return "Empty List";
+
             string s = "(";
             Node<T>* node = head;
-            while (node != NULL){
-                s+= to_string(node->cargo);
-                node = node->next;
+            while (node != nullptr){
+                s+= to_string(node->get_cargo());
+                node = node->get_next();
                 if (node != NULL) s+= ", ";
             }
             return s + ")";
