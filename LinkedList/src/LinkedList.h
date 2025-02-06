@@ -13,3 +13,11 @@ class Node{
         }
 };
 
+template <class T>
+class LinkedList{
+    int num_nodes;
+    Node<T> head;
+
+    
+};
+
