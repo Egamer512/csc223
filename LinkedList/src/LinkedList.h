@@ -24,5 +24,12 @@ class LinkedList{
             head = nullptr;
         }
 
+        void insert_at_front(T cargo){
+            Node<T>* front = new Node<T>(cargo, head);
+            head = front;
+            num_nodes++;
+        }
+
+
 };
 
