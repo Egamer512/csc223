@@ -53,6 +53,16 @@ class LinkedList{
             return cargo;
         }
 
+        string to_str() const{
+            string s = "(";
+            Node<T>* node = head;
+            while (node != NULL){
+                
+            }
+        }
+
+
+
 
 };
 
