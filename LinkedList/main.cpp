@@ -72,6 +72,7 @@ int main(){
     node2->next = node3;
 
     cout << render_list(node1) << endl;
-    cout << render_list_backward(node1) << endl;
+    remove_second(node1);
+    cout << render_list(node1) << endl;
     return 0;
 }
