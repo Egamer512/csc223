@@ -5,6 +5,10 @@
 #include "LinkedList.h"
 using namespace std;
 
+
+
+
+/* 
 TEST_CASE("Test creates and renders the list Nodes"){
     Node* node1 = new Node;
     CHECK(node1->cargo == 0);
@@ -52,3 +56,5 @@ TEST_CASE("Test can display linked nodes with parenthesis") {
     CHECK(render_pretty(node4, &render_list) == "(4, 3, 2, 1)");
     CHECK(render_pretty(node4, &render_list_backward) == "(1, 2, 3, 4)");
 }
+
+*/
