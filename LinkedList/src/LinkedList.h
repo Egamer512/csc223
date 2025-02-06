@@ -57,8 +57,11 @@ class LinkedList{
             string s = "(";
             Node<T>* node = head;
             while (node != NULL){
-                
+                s+= to_string(node->cargo);
+                node = node->next;
+                if (node != NULL) s+= ", ";
             }
+            return s + ")";
         }
 
 
