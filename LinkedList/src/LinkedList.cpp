@@ -1,7 +1,7 @@
 #include "LinkedList.h"
 #include <iostream>
 using namespace std;
-
+/*
 Node::Node(){
     cargo = 0;
     next=nullptr;
@@ -49,4 +49,4 @@ string render_list_backward(Node* list){
 string render_pretty(Node* list, string (*list_renderer)(Node*)) {
     return "(" + list_renderer(list) + ")";
 }
-
+*/
