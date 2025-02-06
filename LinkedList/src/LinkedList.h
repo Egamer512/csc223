@@ -1,4 +1,5 @@
 #include <iostream>
+#define LINKEDLIST_H
 using namespace std;
 
 template <class T>
@@ -16,15 +17,23 @@ class Node{
             this->next = next;
         }
 
+        T get_cargo() const{
+            return cargo;
+        }
+
+        Node<T> get_next() const{
+            return next;
+        }
+
         string to_str() const{
-            return string(cargo);
+            return to_string(cargo);
         }
 };
 
 template <class T>
 class LinkedList{
     int num_nodes;
-    Node<T> head;
+    Node<T>* head;
 
     public:
         LinkedList(){
