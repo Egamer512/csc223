@@ -37,6 +37,20 @@ class LinkedList{
 
         T remove_from_front(){
             if (head == NULL) throw runtime_error("List is Empty");
+
+            //Okay so basically the T cargo is the next element in the Linked List
+            T cargo = head->cargo;
+
+            // Pointer front is now the head, or first element
+            Node<T>* front = head;
+
+            //the head is now the second element, so the first element is no longer in the list
+            head = head->next;
+            // delete the pointer
+            delete front;
+            // reduce the number of nodes
+            num_nodes--;
+            return cargo;
         }
 
 
