@@ -7,6 +7,10 @@ class Node{
     Node<T>* next;
 
     public:
+        Node(){
+            //Empty Node
+        }
+
         Node(T cargo, Node<T>* next){
             this->cargo = cargo;
             this->next = next;
