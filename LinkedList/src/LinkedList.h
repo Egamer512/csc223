@@ -69,6 +69,10 @@ class LinkedList{
             return cargo;
         }
 
+        T remove_item(int pos){
+            
+        }
+
         string to_str() const{
             if (head == nullptr) return "Empty List";
 
@@ -85,8 +89,7 @@ class LinkedList{
         int length() const{
             return num_nodes;
         }
-
-
+   
 
 
 };
