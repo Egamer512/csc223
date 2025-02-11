@@ -70,6 +70,10 @@ class LinkedList{
         }
 
         T remove_item(int pos){
+            if (head == NULL) throw runtime_error("List is Empty");
+
+            if (pos == 1) return remove_from_front();
+
             
         }
 
