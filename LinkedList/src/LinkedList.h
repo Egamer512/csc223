@@ -72,7 +72,12 @@ class LinkedList{
         T remove_item(int pos){
             if (head == NULL) throw runtime_error("List is Empty");
 
-            if (pos == 1) return remove_from_front();
+            if (pos == 1) return remove_from_front(); //if we're at the 1st position, just use the func we use already
+
+            Node<T>* current = head;
+            for(int i = 1; i < pos; i++){
+                current = current->next;
+            }
 
             
         }
