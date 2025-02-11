@@ -19,6 +19,11 @@ TEST_CASE("Test can create empty linked list") {
     CHECK(list.to_str() == "(9, 42, 5)");
 }
 
+TEST_CASE("Test out the new remove function"){
+    LinkedList<int> list;
+    
+}
+
 
 
 

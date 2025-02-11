@@ -75,9 +75,16 @@ class LinkedList{
             if (pos == 1) return remove_from_front(); //if we're at the 1st position, just use the func we use already
 
             Node<T>* current = head;
-            for(int i = 1; i < pos; i++){
+            for(int i = 1; i < pos; i++){ // traversal right before the node we wanna remove
                 current = current->next;
             }
+            Node<T>* target = current->next;
+            T cargo = target->cargo;
+            current->next = target->next;
+            delete target;
+            num_nodes--;
+            return cargo;
+
 
             
         }
