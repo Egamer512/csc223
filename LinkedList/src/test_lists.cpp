@@ -21,7 +21,12 @@ TEST_CASE("Test can create empty linked list") {
 
 TEST_CASE("Test out the new remove function"){
     LinkedList<int> list;
-    
+    list.insert_at_front(5);
+    list.insert_at_front(42);
+    list.insert_at_front(9);
+    list.remove_item(2);
+    CHECK(list.to_str() == "(9, 42)");
+
 }
 
 

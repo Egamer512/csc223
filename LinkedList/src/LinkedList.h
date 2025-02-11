@@ -3,10 +3,13 @@ using namespace std;
 
 template <class T>
 class Node{
-    T cargo;
-    Node<T>* next;
+    
 
     public:
+
+    T cargo;
+    Node<T>* next;
+    
         Node(){
             //Empty Node
         }
