@@ -13,3 +13,7 @@
 
 ## Diagram
 
+![Alt text](image.png)
+
+### Source for Diagram and Logic for LinkedList Deletion:
+https://afteracademy.com/blog/types-of-linked-list-and-operation-on-linked-list
