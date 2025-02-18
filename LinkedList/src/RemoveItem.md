@@ -11,6 +11,10 @@
 5. Delete the Node you want to remove and reduce the num_node count. 
 
 
+## Code
+![Alt text](image-1.png)
+
+
 ## Diagram
 
 ![Alt text](image.png)
