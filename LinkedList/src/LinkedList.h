@@ -4,7 +4,6 @@ using namespace std;
 template <class T>
 class Node{
     
-
     public:
 
     T cargo;
@@ -56,13 +55,10 @@ class LinkedList{
 
         T remove_from_front(){
             if (head == NULL) throw runtime_error("List is Empty");
-
             //Okay so basically the T cargo is the next element in the Linked List
             T cargo = head->cargo;
-
             // Pointer front is now the head, or first element
             Node<T>* front = head;
-
             //the head is now the second element, so the first element is no longer in the list
             head = head->next;
             // delete the pointer
@@ -74,9 +70,7 @@ class LinkedList{
 
         T remove_item(int pos){
             if (head == NULL) throw runtime_error("List is Empty");
-
             if (pos == 1) return remove_from_front(); //if we're at the 1st position, just use the func we use already
-
             Node<T>* current = head;
             for(int i = 1; i < pos-1; i++){ // traversal right before the node we wanna remove
                 current = current->next;
@@ -86,10 +80,7 @@ class LinkedList{
             current->next = target->next;
             delete target;
             num_nodes--;
-            return cargo;
-
-
-            
+            return cargo;            
         }
 
         string to_str() const{
@@ -108,8 +99,28 @@ class LinkedList{
         int length() const{
             return num_nodes;
         }
+
+        T get_item(int pos){
+            Node<T>* target = head; //setting the pointer to the head
+            for(int i = 0; i < pos; i++){
+                target = target->next; //going through the linkedlist until the position we want
+            }
+            return target->cargo; // get the cargo
+        }
+
+        void insert_item(T cargo, int pos){
+            Node<T>* start_node = head;
+            for(int i = 0; i < pos; i++){
+                start_node = start_node->next;
+            }
+            Node<T>* node = new Node<T>(cargo, start_node->next);
+            start_node->next = node;
+
+        }
    
 
 
 };
+
+
 
