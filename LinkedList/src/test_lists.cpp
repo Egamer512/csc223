@@ -27,8 +27,11 @@ TEST_CASE("Test out the new remove function"){
     list.insert_at_front(9);
     list.remove_item(1);
     CHECK(list.to_str() == "(42, 5)");
-    list.remove_item(2);
-    CHECK(list.to_str() == "(42)");
+    list.remove_from_front();
+    list.remove_from_front();
+    CHECK(list.to_str() == "Empty List");
+
+
 }
 
 

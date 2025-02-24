@@ -54,7 +54,7 @@ class LinkedList{
         }
 
         T remove_from_front(){
-            if (head == NULL) throw runtime_error("List is Empty");
+            if (head == nullptr) throw runtime_error("List is Empty");
             //Okay so basically the T cargo is the next element in the Linked List
             T cargo = head->cargo;
             // Pointer front is now the head, or first element
@@ -122,5 +122,56 @@ class LinkedList{
 
 };
 
+/* 
+template <class T>
+class CLIST{
+    int num_nodes;
+    Node<T>* head;
 
 
+    public:
+    CLIST(){
+        num_nodes = 0;
+        head = nullptr;
+    }
+
+        void insert_at_front(T cargo){
+        Node<T>* front = new Node<T>(cargo, head);
+        head = front;
+        num_nodes++;
+
+        if(num_node > 1){
+            NOde<T>* tail = head;
+            while(tail->next != head->next){
+                tail = tail-next;
+            }
+            tail-next = head;
+        }
+    }
+
+        T remove_from_front(){
+            if (head == NULL) throw runtime_error("List is Empty");
+            //Okay so basically the T cargo is the next element in the Linked List
+            T cargo = head->cargo;
+            // Pointer front is now the head, or first element
+            Node<T>* front = head;
+            //the head is now the second element, so the first element is no longer in the list
+            head = head->next;
+            // delete the pointer
+            delete front;
+            // reduce the number of nodes
+            num_nodes--;
+            
+            Node<T>* tail = head;
+            if(num_nodes > 1){
+                for(int i = 0; i < num_nodes; i++){
+                    tail = tail->next;
+                }
+            }
+            tail->next = head;
+            return cargo;
+        }
+
+};
+
+*/
