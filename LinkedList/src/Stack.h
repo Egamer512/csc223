@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-#include "#LinkedList.h"
+#include "LinkedList.h"
 
 template <class T>
 struct Stack:public LinkedList<T>{
@@ -9,5 +9,12 @@ struct Stack:public LinkedList<T>{
     }
     T pop(){
         return LinkedList<T>::remove_from_front();
+    }
+    bool empty() const{
+        return (LinkedList<T>::length() == 0);
+    }
+    T top() {
+        if (LinkedList<T>::head == nullptr) throw runtime_error "Can't top from an empty stck";
+        return LinkedList<T>::head->cargo;
     }
 };
