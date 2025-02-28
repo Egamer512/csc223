@@ -19,6 +19,10 @@ class Stack{
         return items.length() == 0;
     }
     T top(){
-        ig
+        if(is_empty())
+            throw runtime_error("Can't return the top item of an empty list")
+        T top_item = items.remove_from_front();
+        items.insert_at_front();
+        return top_item;
     }
 };
