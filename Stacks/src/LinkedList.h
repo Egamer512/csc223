@@ -33,10 +33,13 @@ class Node{
 
 template <class T>
 class LinkedList{
-    int num_nodes;
-    Node<T>* head;
+    
 
     public:
+
+    int num_nodes;
+    Node<T>* head;
+    
         LinkedList(){
             num_nodes = 0;
             head = nullptr;
@@ -159,7 +162,7 @@ class CLIST{
             head = head->next;
             // delete the pointer
             delete front;
-            // reduce the number of nodes
+            // reduce the number of nodest
             num_nodes--;
             
             Node<T>* tail = head;
