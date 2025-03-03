@@ -41,6 +41,10 @@ class Stack{
         }
         return items[top_item];
     }
+
+    size_t size() const {
+        return top_item + 1;
+    }
 };
 
 #endif // STACK_H
