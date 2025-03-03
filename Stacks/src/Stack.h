@@ -9,8 +9,18 @@ class Stack{
 
     
     public:
-    void push(T item){
-        items.insert_at_front(item);
+
+    Stack(){
+        top_item = -1;
+    }
+
+    
+
+    void push(const T& item){
+        if (top_item >= MAX_SIZE -1){
+            throw std::overflow_error("Stack Overflow");
+        }
+        items[++top_item] = value;
     }
 
     T pop() {
