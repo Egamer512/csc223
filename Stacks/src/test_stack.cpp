@@ -15,8 +15,8 @@ TEST_CASE("Test basic stack operations on stack of ints") {
     CHECK(stack.top() == 42);
     CHECK(stack.pop() == 42);
     CHECK(stack.top() == 11);
-    CHECK(stack.empty() == false);
+    CHECK(stack.is_empty() == false);
     stack.pop();
     CHECK(stack.pop() == 9);
-    CHECK(stack.empty() == true);
+    CHECK(stack.is_empty() == true);
 }

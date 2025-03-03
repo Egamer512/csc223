@@ -4,11 +4,15 @@ using namespace std;
 
 template <class T>
 class Stack{
-    LinkedList<T> items;
+    int top_item;
+    T items[MAX_SIZE];
+
+    
     public:
     void push(T item){
         items.insert_at_front(item);
     }
+
     T pop() {
         if (is_empty()){
             throw runtime_error("Can't remove an empty list(Stack)!")
@@ -18,6 +22,7 @@ class Stack{
     bool is_empty() const{
         return items.length() == 0;
     }
+
     T top(){
         if(is_empty())
             throw runtime_error("Can't return the top item of an empty list")
