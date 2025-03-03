@@ -1,6 +1,10 @@
 #include <iostream>
 using namespace std;
 #include "LinkedList.h"
+#ifndef STACK_H
+#define STACK_H
+#define MAX_SIZE 128
+#include <stdexcept>
 
 template <class T>
 class Stack{
@@ -41,3 +45,6 @@ class Stack{
         return top_item;
     }
 };
+
+
+#endif // STACK_H
