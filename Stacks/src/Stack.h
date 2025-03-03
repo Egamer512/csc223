@@ -18,8 +18,6 @@ class Stack{
         top_item = -1;
     }
 
-    
-
     void push(const T& item){
         if (top_item >= MAX_SIZE -1){
             throw std::overflow_error("Stack Overflow");
@@ -31,20 +29,18 @@ class Stack{
         if (is_empty()){
             throw runtime_error("Can't remove an empty list(Stack)!")
         }
-        return items.remove_from_front();
+        return items[top_item--];
     }
     bool is_empty() const{
-        return items.length() == 0;
+        return top_item == -1;
     }
 
-    T top(){
-        if(is_empty())
-            throw runtime_error("Can't return the top item of an empty list")
-        T top_item = items.remove_from_front();
-        items.insert_at_front();
-        return top_item;
+    const T& top() const {
+        if (empty()) {
+            throw std::underflow_error("Stack is empty");
+        }
+        return items[top_item];
     }
 };
-
 
 #endif // STACK_H
