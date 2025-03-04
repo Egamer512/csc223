@@ -1,5 +1,7 @@
 #include "LinkedList.h"
 #include <vector>
+#include <cctype>
+#include <string>
 using namespace std;
 
 template <class T>
@@ -34,13 +36,33 @@ class Stack
 vector<string> split_on_spaces(string expression){
     stringstream ss(expression);
     vector<string> exp_vector;
-    string token;
-    while(ss >> token){
-        exp_vector.push_back(token);
+    string item;
+    while(ss >> item){
+        exp_vector.push_back(item);
     }
     return exp_vector;
 }
 
 int eval_postfix_expr(const string& exp){
-    
+    vector<string> exp_vector = split_on_spaces(exp); // Full Expression in a Vector
+    Stack<int> operands; // Stack of the operands
+    for(const auto& item : exp_vector){
+        if(isdigit(item[0])){
+            operands.push(stoi(item));
+        }else{
+            int right = operands.pop();
+            int left = operands.pop();
+
+            if(item[0] == '+'){
+                operands.push(left + right);
+            }else if(item[0] == '-'){
+                operands.push(left - right);
+            }else if(item[0] == '*'){
+                operands.push(left * right);
+            }else{
+                operands.push(left / right);
+            }
+        }
+    }
+    return operands.pop();
 }

@@ -20,3 +20,9 @@ TEST_CASE("Test basic stack operations on stack of ints") {
     CHECK(stack.pop() == 9);
     CHECK(stack.is_empty() == true);
 }
+
+TEST_CASE("POST FIX"){
+    string s = "3 3 +";
+    CHECK(eval_postfix_expr(s) == 6);
+    CHECK(eval_postfix_expr("2 5 4 + *") == 18);
+}
