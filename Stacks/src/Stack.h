@@ -22,7 +22,7 @@ class Stack{
         if (top_item >= MAX_SIZE -1){
             throw std::overflow_error("Stack Overflow");
         }
-        items[++top_item] = value;
+        items[++top_item] = item;
     }
 
     T pop() {
