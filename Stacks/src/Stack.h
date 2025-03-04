@@ -1,50 +1,32 @@
-#include <iostream>
-using namespace std;
 #include "LinkedList.h"
-#ifndef STACK_H
-#define STACK_H
-#define MAX_SIZE 128
-#include <stdexcept>
+#include <vector>
+using namespace std;
 
 template <class T>
-class Stack{
-    int top_item;
-    T items[MAX_SIZE];
+class Stack
+{
+    LinkedList<T> items;
 
-    
-    public:
-
-    Stack(){
-        top_item = -1;
-    }
-
-    void push(const T& item){
-        if (top_item >= MAX_SIZE -1){
-            throw std::overflow_error("Stack Overflow");
-        }
-        items[++top_item] = item;
+  public:
+    void push(T item) {
+        items.insert_at_front(item);
     }
 
     T pop() {
-        if (is_empty()){
-            throw runtime_error("Can't remove an empty list(Stack)!");
-        }
-        return items[top_item--];
-    }
-    bool is_empty() const{
-        return top_item == -1;
+        if (empty())
+           throw runtime_error("Can't pop from empty stack!");
+        return items.remove_from_front();
     }
 
-    const T& top() const {
-        if (is_empty()) {
-            throw std::underflow_error("Stack is empty");
-        }
-        return items[top_item];
+    bool empty() const {
+        return items.length() == 0;
     }
 
-    size_t size() const {
-        return top_item + 1;
+    T top() {
+       if (empty())
+           throw runtime_error("Can't return top item of empty stack!");
+       T top_item = items.remove_from_front();
+       items.insert_at_front(top_item);
+       return top_item; 
     }
 };
-
-#endif // STACK_H
