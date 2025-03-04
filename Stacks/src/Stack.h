@@ -27,7 +27,7 @@ class Stack{
 
     T pop() {
         if (is_empty()){
-            throw runtime_error("Can't remove an empty list(Stack)!")
+            throw runtime_error("Can't remove an empty list(Stack)!");
         }
         return items[top_item--];
     }
@@ -36,7 +36,7 @@ class Stack{
     }
 
     const T& top() const {
-        if (empty()) {
+        if (is_empty()) {
             throw std::underflow_error("Stack is empty");
         }
         return items[top_item];
