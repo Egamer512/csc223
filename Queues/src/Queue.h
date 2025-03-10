@@ -19,4 +19,15 @@ class Queue : public LinkedList<T>
     bool empty() {
         return (LinkedList<T>::length() == 0);
     }
+
+    void insert_in_order(T item){
+        for(int i = 0; i < LinkedList<T>::length(); i++){
+            T element = LinkedList<T>::get_item_at(i);
+            if(item < element){
+                LinkedList<T>::insert_item_at(i);
+            }
+        }
+    }
+
+
 };
