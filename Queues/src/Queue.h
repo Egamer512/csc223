@@ -9,7 +9,9 @@ class Queue : public LinkedList<T>
 
     // modifiers
     void insert(T item) {
-        LinkedList<T>::insert_at_end(item);
+       if(LinkedList<T>::length() == 0){
+        LinkedList<T>::insert_at_front(item);
+       }
     }
 
     T remove() {
