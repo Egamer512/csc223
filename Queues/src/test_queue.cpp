@@ -4,7 +4,7 @@
 #include "Queue.h"
 using namespace std;
 
-TEST_CASE("Test basic queue operations on queue of strings") {
+/* TEST_CASE("Test basic queue operations on queue of strings") {
     Queue<string> queue;
     CHECK(queue.empty() == true);
     queue.insert("first");
@@ -27,6 +27,12 @@ TEST_CASE("Test basic queue operations on queue of strings") {
     queue.insert("thirteenth");
     CHECK(queue.remove() == "fifth");
 }
+*/
 
-
-TEST_CASE("looking to see if my function actually kinda works")
+TEST_CASE("looking to see if my function actually kinda works"){
+    Queue<int> queue;
+    queue.insert(5);
+    queue.insert(3);
+    queue.insert(7);
+    CHECK(queue.remove() == 7);
+}

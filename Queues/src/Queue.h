@@ -13,7 +13,7 @@ class Queue : public LinkedList<T>
         LinkedList<T>::insert_at_front(item); // adding for an empty queue
        }
        int i = 1; // looping to check whether or not item is less than an element (basically, we want to loop until the next max)
-       while(i <= LinkedList<T>::length() && item < LinkedList<T> get_item_at(i)){
+       while(i <= LinkedList<T>::length() && item < LinkedList<T>::get_item_at(i)){
         i++;
        }
        LinkedList<T>::insert_item_at(item, i -1);
