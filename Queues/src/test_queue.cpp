@@ -35,4 +35,6 @@ TEST_CASE("looking to see if my function actually kinda works"){
     queue.insert(3);
     queue.insert(7);
     CHECK(queue.remove() == 7);
+    CHECK(queue.remove() == 5);
+    CHECK(queue.remove() == 3);
 }
