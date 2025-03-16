@@ -11,6 +11,7 @@ class Queue : public LinkedList<T>
     void insert(T item) {
        if(LinkedList<T>::length() == 0){
         LinkedList<T>::insert_at_front(item); // adding for an empty queue
+        return; //without this return statement, the item would be added twice in an empty list!
        }
        int i = 1; // looping to check whether or not item is less than an element (basically, we want to loop until the next max)
        while(i <= LinkedList<T>::length() && item < LinkedList<T>::get_item_at(i)){
@@ -20,6 +21,9 @@ class Queue : public LinkedList<T>
     }
 
     T remove() {
+        if (empty()) {
+            throw std::underflow_error("Can't remove from empty queue");
+        }       
         return LinkedList<T>::remove_from_front();
     }
 
