@@ -9,7 +9,7 @@ class Queue : public LinkedList<T>
 
     // modifiers
     void insert(T item) {
-       if(LinkedList<T>::length() == 0){
+       if(empty()){
         LinkedList<T>::insert_at_front(item); // adding for an empty queue
         return; //without this return statement, the item would be added twice in an empty list!
        }

@@ -19,8 +19,13 @@ public:
         if ((last + 1) % MAX_SIZE == first) {
             throw std::overflow_error("No more space in queue");
         }
-        items[last] = value;
-        last = (last + 1) % MAX_SIZE;
+        int pos = last;
+        while(pos > first && items[pos - 1] < value){
+            items[pos] = items[pos - 1];
+            pos--; // shifting the elements to the right until the correct spot is found
+        }
+        items[pos] = value;
+        last++;
     }
 
     T remove() {
