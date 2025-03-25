@@ -15,3 +15,16 @@ struct RGTpair {
     RGThing item1;
     RGThing item2;
 };
+
+class RGTPQ{
+    private:
+    NormalQueue<RGThing> red_queue;
+    NormalQueue<RGThing> green_queue;
+
+    public:
+    bool empty(){
+        return red_queue.empty() && green_queue.empty();
+    }
+    
+
+};
