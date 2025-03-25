@@ -5,7 +5,7 @@ class NormalQueue : public LinkedList<T>
 {
   public:
     // constructors
-    Queue() = default;
+    NormalQueue() = default;
 
     // modifiers
     void insert(T item) {

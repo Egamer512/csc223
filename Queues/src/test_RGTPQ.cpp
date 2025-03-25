@@ -12,7 +12,16 @@ TEST_CASE("Insertion and Removal"){
     RGThing green1 {GREEN};
     RGThing red3 {RED};
     RGThing green2 {GREEN};
-    
+
+    CHECK(Queue.empty() == true);
+
+    Queue.insert(red1);
+    Queue.insert(red2);
+    Queue.insert(green1);
+
+    RGTpair pair1 = Queue.remove();
+    CHECK(pair1.item1.color == RED);
+    CHECK(pair1.item2.color == GREEN);
 
 
 }
