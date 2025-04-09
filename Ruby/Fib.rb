@@ -1,3 +1,4 @@
+#=> Iterative
 def fibs(size)
   fib_array = [0, 1]
   #=> base
@@ -18,4 +19,18 @@ def fibs(size)
   return fib_array
 end
 
-puts fibs(8)
+#=> Recursive
+def fibs_rec(size)
+  if size == 1
+    return [0]
+  end
+  if size == 2
+    return [0, 1]
+  end
+
+  sequence = fibs_rec(size -1)
+  sequence << sequence[-1] + sequence[-2]
+  return sequence
+end
+
+puts fibs_rec(8)
