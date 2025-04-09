@@ -11,5 +11,3 @@ def caesar_cipher(string, shift_val)
   end
   res
 end
-
-puts caesar_cipher("wow", 3)
