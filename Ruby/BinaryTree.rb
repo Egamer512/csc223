@@ -4,8 +4,8 @@ class Node
 
   def initialize(value=nil)
     @value = value
-    left = nil
-    right = nil
+    @left = nil
+    @right = nil
   end
 end
 
@@ -18,13 +18,15 @@ class BinaryTree
 
   def insert(value, node = @root_node)
     if node.nil?
-      return Node.new(value)
+      new_node = Node.new(value)
+      @root_node ||= new_node
+      return new_node
     end
 
     if value > node.value
       node.right = insert(value, node.right)
     else
-      node,left = insert(value, node.left)
+      node.left = insert(value, node.left)
     end
     node
   end
@@ -47,4 +49,3 @@ end
 
 tree = BinaryTree.new
 tree.insert(5)
-tree.visualize
