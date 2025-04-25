@@ -16,14 +16,27 @@ class BinaryTree
     @root_node = Node.new(root_value)
   end
 
-  def insert(node, value)
+  def insert(value, node = @root_node)
+    if node.nil?
+      return Node.new(value)
+    end
+
     if value > node.value
-      insert(node.right, value)
-    elsif value <= node.value
-      insert(node.left, value)
+      node.right = insert(value, node.right)
     else
-      puts "Ok lil man or woman or in-betweener, the value you inputed wasn't very cool lil bro, try again."
+      node,left = insert(value, node.left)
+    end
+    node
   end
+
+  def visualize(node = @root_node, prefix = '', is_left = true)
+    return if node.nil?
+
+    visualize(node.right, prefix + (is_left ? "│   " : "    "), false)
+    puts prefix + (is_left ? "└── " : "┌── ") + node.value.to_s
+    visualize(node.left, prefix + (is_left ? "    " : "│   "), true)
+  end
+
 
   def search(value)
   end
@@ -31,3 +44,7 @@ class BinaryTree
   def delete(value)
   end
 end
+
+tree = BinaryTree.new
+tree.insert(5)
+tree.visualize
