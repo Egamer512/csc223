@@ -4,10 +4,12 @@ def caesar_cipher(string, shift_val)
   string.each_char do |char|
     if alphabet.include?(char)
       index = alphabet.index(char)
-      res += alphabet[(index + shift_val) % 26] // this is actually ths where the shift is happening
+      res += alphabet[(index + shift_val) % 26] 
     else
       res += char
     end
   end
-  res
+  puts res
 end
+
+caesar_cipher("wow", 4)
