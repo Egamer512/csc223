@@ -9,16 +9,6 @@ class Node
   end
 end
 
-class TreeVisualizer
-  def self.print_tree(node, prefix = '', is_left = true)
-    return if node.nil?
-
-    print_tree(node.right, prefix + (is_left ? "│   " : "    "), false)
-    puts prefix + (is_left ? "└── " : "┌── ") + node.value.to_s
-    print_tree(node.left, prefix + (is_left ? "    " : "│   "), true)
-  end
-end
-
 class BinaryTree
   attr_accessor :root_node
 
