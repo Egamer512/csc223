@@ -13,14 +13,17 @@ class BinaryTree
   attr_accessor :root_node
 
   def initialize(root_value=nil)
-    @root_node = Node.new(root_value)
+    @root_node = root_value.nil? ? nil:Node.new(root_value)
   end
 
   def insert(value, node = @root_node)
+    if @root_node.nil?
+      @root_node = Node.new(value)
+      return @root_node
+    end
+
     if node.nil?
-      new_node = Node.new(value)
-      @root_node ||= new_node
-      return new_node
+      return Node.new(value)
     end
 
     if value > node.value
@@ -40,12 +43,33 @@ class BinaryTree
   end
 
 
-  def search(value)
+  def search(root = @root_node, value)
+    if root.value == value
+      return root
+    end
+    if root.value < value
+      return search(root.right, value)
+    end
+    return search(root.left, value)
   end
 
   def delete(value)
+    Node target = search(value)
+    if target.left != nil
+      target = target.left
+      delete(target.left)
+    elsif target.right != nil
+      target = target.right
+      delete(target.right)
+    else
+      target = nil
+    end
+
   end
 end
 
 tree = BinaryTree.new
-tree.insert(5)
+[6, 9, 4, 2, 8, 23, 100, 28, 75, 47].each {|val| tree.insert(val)}
+tree.visualize
+delete(23)
+tree.visualize
