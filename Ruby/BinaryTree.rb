@@ -44,32 +44,41 @@ class BinaryTree
 
 
   def search(root = @root_node, value)
+    return nil if root.nil?
     if root.value == value
       return root
     end
     if root.value < value
       return search(root.right, value)
     end
-    return search(root.left, value)
+    search(root.left, value)
   end
 
-  def delete(value)
-    Node target = search(value)
-    if target.left != nil
-      target = target.left
-      delete(target.left)
-    elsif target.right != nil
-      target = target.right
-      delete(target.right)
+  def delete(value, node = @root_node)
+    return nil if node.nil?
+    reutrn @root_node unless search(@root_node, value)
+
+    if value < node.value
+      node.left = delete(value, node.left)
+    elsif value > node.value
+      node.right = delete(value, node.right)
     else
-      target = nil
-    end
+      return node.right if node.left.nil?
+      return node.left if node.right.nil?
 
+      successor = node.right
+      successor = successor.left while successor.left
+
+      node.value = successor.value
+      node.right = delete(successor.value, node.right)
+    end
+    node
   end
+  
 end
 
 tree = BinaryTree.new
 [6, 9, 4, 2, 8, 23, 100, 28, 75, 47].each {|val| tree.insert(val)}
 tree.visualize
-delete(23)
+tree. delete(23)
 tree.visualize
