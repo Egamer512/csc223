@@ -6,6 +6,7 @@ class Node
     @value = value
     @left = nil
     @right = nil
+    @color = nil
   end
 end
 
@@ -14,6 +15,7 @@ class BinaryTree
 
   def initialize(root_value=nil)
     @root_node = root_value.nil? ? nil:Node.new(root_value)
+    @root_node.color = "black"
   end
 
   def insert(value, node = @root_node)
@@ -111,6 +113,4 @@ end
 
 tree = BinaryTree.new
 [6, 9, 4, 2, 8, 23, 100, 28, 75, 47].each {|val| tree.insert(val)}
-tree.visualize
-tree. delete(23)
-tree.visualize
+puts tree.root_node.color
