@@ -43,24 +43,23 @@ class BinaryTree
 
   def build_lines(node)
     return [""] if node.nil?
-    label = node.value.to_s
+    label = "#{node.value}(#{node.color.capitalize})"
     left_lines  = build_lines(node.left)
     right_lines = build_lines(node.right)
     left_width  = left_lines.first&.length || 0
     right_width = right_lines.first&.length || 0
     label_line  = " " * left_width + label + " " * right_width
     branch_line = ""
-    branch_line += " " * (left_width - 1) + "/" if node.left
-    branch_line += " " * (label.length - 2)
+    branch_line += " " * [left_width - 1, 0].max + "/" if node.left
+    branch_line += " " * [label.length - 2, 0].max
     branch_line += "\\" if node.right
     branch_line = branch_line.ljust(left_width + label.length + right_width)
     max_height  = [left_lines.length, right_lines.length].max
-    left_lines  += [" " * left_width] * (max_height - left_lines.length)
+    left_lines  += [" " * left_width]  * (max_height - left_lines.length)
     right_lines += [" " * right_width] * (max_height - right_lines.length)
-    child_lines = left_lines.zip(right_lines).map { |l, r| l + " " * label.length + r }
-    [label_line, branch_line] + child_lines
-  end
-
+    child_lines = left_lines.zip(right_lines).map do |l, r|
+      l + " " * label.length + r
+    end
     [label_line, branch_line] + child_lines
   end
 
@@ -99,6 +98,9 @@ end
 
 # Testing the Tree
 tree = BinaryTree.new
-[6, 9, 4, 2, 8, 23, 100, 28, 75, 47].each { |val| tree.insert(val) }
+[6, 9, 4,5, 2, 8, 23].each { |val| tree.insert(val) }
 puts tree.root_node.color  # This should now output "black"
+tree.visualize
+
+tree.delete(6)
 tree.visualize
