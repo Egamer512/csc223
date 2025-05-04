@@ -1,12 +1,12 @@
 class Node
-  attr_reader :value
+  attr_reader :value, :color
   attr_accessor :left, :right
 
-  def initialize(value=nil)
+  def initialize(value=nil, color="red")
     @value = value
     @left = nil
     @right = nil
-    @color = nil
+    @color = color 
   end
 end
 
@@ -14,8 +14,7 @@ class BinaryTree
   attr_accessor :root_node
 
   def initialize(root_value=nil)
-    @root_node = root_value.nil? ? nil:Node.new(root_value)
-    @root_node.color = "black"
+    @root_node = root_value.nil? ? nil : Node.new(root_value, 'black')
   end
 
   def insert(value, node = @root_node)
@@ -41,41 +40,40 @@ class BinaryTree
     lines.each { |line| puts line }
     puts "\n\n"
   end
-  
+
   def build_lines(node)
     return [""] if node.nil?
-  
+
     label = node.value.to_s
-  
+
     left_lines = build_lines(node.left)
     right_lines = build_lines(node.right)
-  
+
     left_width  = left_lines.first&.length || 0
     right_width = right_lines.first&.length || 0
-  
+
     # Center the label
     label_line = " " * left_width + label + " " * right_width
-  
+
     # Create branch line
     branch_line = ""
     branch_line += " " * (left_width - 1) + "/" if node.left
     branch_line += " " * (label.length - 2)
     branch_line += "\\" if node.right
     branch_line = branch_line.ljust(left_width + label.length + right_width)
-  
+
     # Pad shorter subtree
     max_height = [left_lines.length, right_lines.length].max
     left_lines += [" " * left_width] * (max_height - left_lines.length)
     right_lines += [" " * right_width] * (max_height - right_lines.length)
-  
+
     # Combine child lines
     child_lines = left_lines.zip(right_lines).map do |l, r|
       l + " " * label.length + r
     end
-  
+
     [label_line, branch_line] + child_lines
   end
-
 
   def search(root = @root_node, value)
     return nil if root.nil?
@@ -90,7 +88,7 @@ class BinaryTree
 
   def delete(value, node = @root_node)
     return nil if node.nil?
-    reutrn @root_node unless search(@root_node, value)
+    return @root_node unless search(@root_node, value)
 
     if value < node.value
       node.left = delete(value, node.left)
@@ -108,9 +106,10 @@ class BinaryTree
     end
     node
   end
-  
 end
 
+# Testing the Tree
 tree = BinaryTree.new
-[6, 9, 4, 2, 8, 23, 100, 28, 75, 47].each {|val| tree.insert(val)}
-puts tree.root_node.color
+[6, 9, 4, 2, 8, 23, 100, 28, 75, 47].each { |val| tree.insert(val) }
+puts tree.root_node.color  # This should now output "black"
+tree.visualize

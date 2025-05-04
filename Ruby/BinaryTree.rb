@@ -88,7 +88,7 @@ class BinaryTree
 
   def delete(value, node = @root_node)
     return nil if node.nil?
-    reutrn @root_node unless search(@root_node, value)
+    return @root_node unless search(@root_node, value)
 
     if value < node.value
       node.left = delete(value, node.left)
