@@ -55,6 +55,23 @@ class BinaryTree
     y.left = x
     x.parent = y
   end
+  def right_rotate(y)
+    x=y.left
+    y.left = x.right
+    if x.right 
+      x.right.parent = y
+    end
+    x.parent = y.parent
+    if y.parent.nil?
+      @root_node = x
+    elsif y == y.parent.left
+      y.parent.left = x
+    else 
+      y.parent.right = x
+    end
+    x.right = y
+    y.parent = x
+  end
 
   def visualize(node = @root_node)
     lines = build_lines(node)
