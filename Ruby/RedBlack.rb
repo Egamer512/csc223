@@ -1,5 +1,5 @@
 class Node
-  attr_accessor :left, :right, :value, :color
+  attr_accessor :left, :right, :value, :color, :parent
 
   def initialize(value=nil, color="red")
     @value = value
@@ -23,8 +23,12 @@ class BinaryTree
     end
 
     if node.nil?
-      return Node.new(value)
+      new_node = Node.new(value)
+      new_node.parent = @current_parent
+      return new_node
     end
+
+    @current_parent = node
 
     if value > node.value
       node.right = insert(value, node.right)
@@ -32,6 +36,24 @@ class BinaryTree
       node.left = insert(value, node.left)
     end
     node
+  end
+
+  def left_rotate(x)
+    y=x.right
+    x.right = y.left
+    if y.left 
+      y.left.parent = x
+    end
+    y.parent = x.parent
+    if x.parent.nil?
+      @root_node = y
+    elsif x == x.parent.left
+      x.parent.left = y
+    else 
+      x.parent.right = y
+    end
+    y.left = x
+    x.parent = y
   end
 
   def visualize(node = @root_node)
