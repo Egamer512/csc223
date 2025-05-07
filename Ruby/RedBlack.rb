@@ -158,11 +158,29 @@ class RedBlackTree
   end
 end
 
+def print_tree(node, left_accessor: nil, right_accessor: nil, value_accessor: nil, prefix: "", is_left: true)
+  return if node.nil?
+
+  left_accessor  ||= -> (n) { n.left }
+  right_accessor ||= -> (n) { n.right }
+  value_accessor ||= -> (n) { n.value}
+
+  right_child = node.right
+  left_child  = node.left
+  
+  print_tree(right_child, left_accessor: left_accessor, right_accessor: right_accessor,
+             value_accessor: value_accessor,
+             prefix: prefix + (is_left ? "│   " : "    "), is_left: false)
+
+  puts prefix + (is_left ? "└── " : "┌── ") + value_accessor.call(node)
+
+  print_tree(left_child, left_accessor: left_accessor, right_accessor: right_accessor,
+             value_accessor: value_accessor,
+             prefix: prefix + (is_left ? "    " : "│   "), is_left: true)
+end
+
 # Sample usage
 tree = RedBlackTree.new
 [6, 9, 4, 8, 23, 28, 47].each { |val| tree.insert(val) }
-tree.visualize
 
-# Delete an element
-tree.delete(23)
-tree.visualize
+print_tree(tree)
