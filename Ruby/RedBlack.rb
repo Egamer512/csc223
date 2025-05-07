@@ -127,31 +127,31 @@ class RedBlackTree
     lines.each { |line| puts line }
     puts "\n\n"
   end
+end
 
-def print_tree(node, left_accessor: nil, right_accessor: nil, value_accessor: nil, prefix: "", is_left: true, color: nil)
+def print_tree(node, left_accessor: nil, right_accessor: nil, value_accessor: nil, prefix: "", is_left: true)
   return if node.nil?
 
   left_accessor  ||= -> (n) { n.left }
   right_accessor ||= -> (n) { n.right }
-  value_accessor ||= -> (n) { n.value.to_s }
-  color_accessor ||= -> (n) { n.color.to_s }
+  value_accessor ||= -> (n) { "#{n.value}(#{n.color==RBNode::RED ? 'R': 'B'})"} 
 
-  right_child = node.right
-  left_child  = node.left
+  right_child = right_accessor.call(node)
+  left_child  = left_accessor.call(node)
 
   print_tree(right_child, left_accessor: left_accessor, right_accessor: right_accessor,
              value_accessor: value_accessor,
-             prefix: prefix + (is_left ? "│   " : "    "), is_left: false, color: color_accessor)
+             prefix: prefix + (is_left ? "│   " : "    "), is_left: false)
 
   puts prefix + (is_left ? "└── " : "┌── ") + value_accessor.call(node)
 
   print_tree(left_child, left_accessor: left_accessor, right_accessor: right_accessor,
              value_accessor: value_accessor,
-             prefix: prefix + (is_left ? "    " : "│   "), is_left: true, color: color_accessor)
+             prefix: prefix + (is_left ? "    " : "│   "), is_left: true)
 end
 
 # Sample usage
 tree = RedBlackTree.new
-[6, 9, 4, 8, 23, 28, 47].each { |val| tree.insert(val) }
+[6, 9, 4, 8, 23, 28, 47, 12, 325, 2356, 7547, 12, 5326, 745].each { |val| tree.insert(val) }
 
 print_tree(tree.root_node)
