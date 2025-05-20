@@ -21,3 +21,5 @@ def merge(left, right)
   sorted + left + right
 end
 
+array = [34, 7, 23, 32, 5, 62]
+puts merge_sort(array)
