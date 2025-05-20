@@ -9,4 +9,15 @@ def merge_sort(array)
 
 end
 
+def merge(left, right)
+  sorted = []
+  until left.empty? || right.empty?
+    if left.first <= right.first
+      sorted << left.shift
+    else
+      sorted << right.shift
+    end
+  end
+  sorted + left + right
+end
 
