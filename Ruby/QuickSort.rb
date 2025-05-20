@@ -9,4 +9,4 @@ def quick_sort(array)
 end
 
 array = [34, 7, 23, 32, 5, 62]
-puts quick_sort(array)
+puts quick_sort(array).inspect
